@@ -1,11 +1,39 @@
 package com.example
 
-import com.example.plugins.configureSockets
-import io.ktor.server.engine.*
-import io.ktor.server.netty.*
+import io.ktor.server.application.*
+import io.ktor.server.response.*
+import io.ktor.server.routing.*
+import io.ktor.server.websocket.*
+import io.ktor.websocket.*
+import org.slf4j.LoggerFactory
+import java.time.Duration
 
-fun main() {
-    embeddedServer(Netty, port = 8080, host = "0.0.0.0") {
-        configureSockets()
-    }.start(wait = true)
+val logger = LoggerFactory.getLogger("package.ClassName")
+
+fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
+
+fun Application.routing() {
+    routing {
+        get("/") {
+            call.respondText("Hello World!")
+        }
+    }
 }
+
+fun Application.configureSockets() {
+    install(WebSockets) {
+        pingPeriodMillis = 0 // FIXME: disabled, unfortunately ping from server to client always results in a timeout
+        masking = false
+    }
+    routing {
+        webSocket("/ktor") {
+            for (frame in incoming) {
+                frame as? Frame.Text ?: continue
+                val userMessage = frame.readText()
+                send(userMessage)
+            }
+        }
+    }
+}
+
+
