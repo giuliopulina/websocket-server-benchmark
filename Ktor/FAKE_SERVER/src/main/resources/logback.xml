@@ -9,5 +9,4 @@
     </root>
     <logger name="org.eclipse.jetty" level="DEBUG"/>
     <logger name="io.netty" level="DEBUG"/>
-    <!--<logger name="io.ktor.server.websocket" level="TRACE"/>-->
 </configuration>

@@ -9,7 +9,6 @@ import io.ktor.websocket.*
 import kotlin.test.Test
 import kotlin.test.assertEquals
 
-
 class ApplicationTest {
     @Test
     fun testRoot() = testApplication {
@@ -27,9 +26,9 @@ class ApplicationTest {
             }
 
             client.webSocket("/ktor") {
-                send(Frame.Text("JetBrains"))
+                send(Frame.Text("echo message"))
                 val responseText = (incoming.receive() as Frame.Text).readText()
-                assertEquals("JetBrains", responseText)
+                assertEquals("echo message", responseText)
             }
         }
     }

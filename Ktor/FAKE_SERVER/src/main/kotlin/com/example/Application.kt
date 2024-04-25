@@ -5,10 +5,6 @@ import io.ktor.server.response.*
 import io.ktor.server.routing.*
 import io.ktor.server.websocket.*
 import io.ktor.websocket.*
-import org.slf4j.LoggerFactory
-import java.time.Duration
-
-val logger = LoggerFactory.getLogger("package.ClassName")
 
 fun main(args: Array<String>): Unit = io.ktor.server.netty.EngineMain.main(args)
 
