@@ -1,6 +1,8 @@
 package com.example.demo.server;
 
 import org.jetbrains.annotations.NotNull;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
 import org.springframework.web.socket.WebSocketSession;
@@ -11,10 +13,7 @@ import java.io.IOException;
 @Component
 public class ServerWebSocketHandler extends TextWebSocketHandler {
 
-    @Override
-    public void afterConnectionEstablished(WebSocketSession session) {
-        session.setTextMessageSizeLimit(20000000);
-    }
+    private final Logger logger = LoggerFactory.getLogger(ServerWebSocketHandler.class);
 
     @Override
     public void handleTextMessage(WebSocketSession callerSession, @NotNull TextMessage toForward) throws IOException {
