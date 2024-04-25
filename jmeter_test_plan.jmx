@@ -1357,7 +1357,7 @@ if (reportFolderPath == null || reportFolderPath.trim().isEmpty()) {
         <stringProp name="Start users period">5</stringProp>
         <stringProp name="Stop users count">12000</stringProp>
         <stringProp name="Stop users period">0</stringProp>
-        <stringProp name="flighttime">1020</stringProp>
+        <stringProp name="flighttime">600</stringProp>
         <stringProp name="rampUp">1</stringProp>
         <elementProp name="ThreadGroup.main_controller" elementType="LoopController" guiclass="LoopControlPanel" testclass="LoopController" testname="Loop Controller">
           <intProp name="LoopController.loops">-1</intProp>
